@@ -43,7 +43,7 @@ $routes->set404Override();
 // $routes->delete('delete/(:num)', 'Home::delete/$1'); //Pintar for
 
 $routes->presenter('pelicula');
-
+$routes->presenter('categoria');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
