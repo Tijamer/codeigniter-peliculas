@@ -6,8 +6,8 @@
     <title>Actualizar Categoria</title>
 </head>
 <body>
-    <form action="/categoria/update/<?=$categoria['id']?>" method="post">
-        <?= view('categoria/_form',['op' =>'Actualizar'])?>
+    <form action="/dashboard/categoria/update/<?=$categoria['id']?>" method="post">
+        <?= view('/dashboard/categoria/_form',['op' =>'Actualizar'])?>
     </form>
 </body>
 </html>
