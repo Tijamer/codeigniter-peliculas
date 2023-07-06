@@ -8,7 +8,10 @@ class Categoria extends BaseController
     public function show($id)
     {
         
-        $categoriaModel = new CategoriaModel();        
+        $categoriaModel = new CategoriaModel();
+        
+        //var_dump($peliculaModel->asArray()->find($id));
+        //var_dump($peliculaModel->asObject()->find($id));        
         echo view('dashboard/categoria/show',[
             'dashboard/categoria' => $categoriaModel ->find($id)
         ]);
@@ -66,9 +69,7 @@ class Categoria extends BaseController
         
         //var_dump(session()->destroy());
         echo view('dashboard/categoria/new',[
-            'categoria'=>[
-                'titulos'=>''
-            ]
+            'categoria'=>new CategoriaModel()
         ]);
         
     }
