@@ -9,6 +9,8 @@
 </html>
 <body>
     <h1>Listado de Categorias</h1>
+    
+    <?= view('partials/_session')?>
     <a href="/dashboard/categoria/new">Create</a>
     <table>
         <tr>
