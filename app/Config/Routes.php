@@ -44,9 +44,21 @@ $routes->delete('pelicula/(:num)','Pelicula::delete');
 //$routes->get('/','Home::index');
 
 $routes->group('dashboard', function($routes){
+    // test user
+    // $routes->get('usuario/crear','\App\Controllers\Web\Usuario::create_user');   
+    // $routes->get('usuario/probar/contrasena','\App\Controllers\Web\Usuario::probar_contrasena');       
     $routes->presenter('pelicula',['controller' =>'Dashboard\Pelicula']);   
-    $routes->presenter('categoria',['except'=>['show'],'controller' =>'Dashboard\Categoria']);    
+    $routes->presenter('categoria',['except'=>['show'],'controller' =>'Dashboard\Categoria']);  
+    //$routes->get('categoria','Dashboard\Categoria::index');  
 });
+$routes->get('login','\App\Controllers\Web\Usuario::login',['as'=>'usuario.login']);
+$routes->post('login_post','\App\Controllers\Web\Usuario::login_post',['as'=>'usuario.login_post']);
+
+$routes->get('register','\App\Controllers\Web\Usuario::register',['as'=>'usuario.register']);
+$routes->post('register_post','\App\Controllers\Web\Usuario::register_post',['as'=>'usuario.register_post']);
+
+$routes->get('logout','\App\Controllers\Web\Usuario::logout',['as'=>'usuario.logout']);
+
 
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
