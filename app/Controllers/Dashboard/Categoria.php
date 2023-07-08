@@ -21,7 +21,7 @@ class Categoria extends BaseController
         $categoriaModel = new CategoriaModel();
         if ($this->validate('categorias')) {
             $categoriaModel->insert([
-                'titulos' =>$this->request->getPost('Titulos')
+                'Titulos' =>$this->request->getPost('Titulo')
             ]);
         }else
         {
@@ -45,7 +45,7 @@ class Categoria extends BaseController
         if ($this->validate('categorias')) {
             $categoriaModel = new CategoriaModel();
             $categoriaModel->update($id,[
-                'titulos' => $this->request->getPost('Titulo')
+                'Titulos' => $this->request->getPost('Titulo')
             ]);
         }else
         {

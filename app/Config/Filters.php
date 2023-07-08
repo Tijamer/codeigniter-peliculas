@@ -9,7 +9,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use App\Filters\MiFiltro;
+//use App\Filters\MiFiltro;
 
 class Filters extends BaseConfig
 {
