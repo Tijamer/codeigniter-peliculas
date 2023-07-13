@@ -98,11 +98,14 @@ class Pelicula extends BaseController
         //return redirect()->back()->with('Mensaje','Registro Gestiondo de manera exitosa');
     }    
     public function index()
-    {
+    {        
         $peliculaModel = new PeliculaModel();
 
         $data = [
-            'pelicula' => $peliculaModel->select('peliculas.*, categorias.titulos as categoria')->join('categorias','categorias.id = peliculas.categoria_id')->find()
+            'pelicula' => $peliculaModel->select('peliculas.*, categorias.titulos as categoria')->join('categorias','categorias.id = peliculas.categoria_id')
+            ->paginate(5),
+            'pager' => $peliculaModel->pager
+            //->find()
             
         ];
         
@@ -188,6 +191,7 @@ class Pelicula extends BaseController
 
     private function asignar_imagen($peliculaId)
     {
+        helper('filesystem');
         if($imagefile = $this->request->getFile('imagen')){
             if($imagefile->isValid()){
                 $validated = $this->validate([
@@ -208,7 +212,7 @@ class Pelicula extends BaseController
                     $imagenId = $imagenModel->insert([
                         'imagen' =>  $imageNombre,
                         'extension' => $ext,
-                        'data' => 'Pendiente'
+                        'data' => json_encode(get_file_info('../public/uploads/peliculas/'. $imageNombre))
                     ]);
                     $peliculaImagenModel = new PeliculaImagenModel();
                         $peliculaImagenModel->insert([
@@ -237,7 +241,7 @@ class Pelicula extends BaseController
         $name = WRITEPATH . 'uploads/peliculas/' . $image;
 
         if (!file_exists($name)) {
-            throw PageNotFoundException::forPageNotFound();
+            //throw PageNotFoundException::forPageNotFound();
         }
 
         $fp = fopen($name, 'rb');

@@ -83,7 +83,10 @@ class Etiqueta extends BaseController
     {
         $etiquetaModel = new EtiquetaModel();        
         $data = [
-            'etiqueta' => $etiquetaModel->select('etiquetas.*, categorias.titulos as categoria')->join('categorias','categorias.id = etiquetas.categoria_id')->find()            
+            'etiqueta' => $etiquetaModel->select('etiquetas.*, categorias.titulos as categoria')->join('categorias','categorias.id = etiquetas.categoria_id')
+            ->paginate(5),
+            'pager' => $etiquetaModel->pager
+            //->find()            
         ];
         
         echo view('dashboard/etiqueta/index',$data);

@@ -75,11 +75,16 @@ class Categoria extends BaseController
     }
     public function index()
     {
-        session()->set('key',array('k','c'));
-         $categoriaModel = new CategoriaModel();
 
-         echo view('dashboard/categoria/index',[
-        'categoria' => $categoriaModel->findAll()
+        //session()->set('key',array('k','c'));
+            $categoriaModel = new CategoriaModel();
+
+            echo view('dashboard/categoria/index',[
+            'categoria' => $categoriaModel
+            ->paginate(5),
+            'pager' => $categoriaModel->pager
+            
+            //findAll()
          ]);
 
         //echo 'aaa';
