@@ -55,6 +55,12 @@ $routes->group('dashboard', function($routes){
     
     $routes->get('pelicula/etiqueta/(:num)', 'Dashboard\pelicula::etiquetas/$1',['as' => 'pelicula.etiquetas']);
     $routes->post('pelicula/etiqueta/(:num)', 'Dashboard\pelicula::etiquetas_post/$1',['as' => 'pelicula.etiquetas']);
+    
+    //$routes->post('pelicula/imagen_delete/(:num)', 'Dashboard\pelicula::borrar_imagen/$1',['as' => 'pelicula.borrar_imagen']);
+    $routes->post('pelicula/imagen_delete/(:num)/(:num)', 'Dashboard\pelicula::borrar_imagen/$1/$2',['as' => 'pelicula.borrar_imagen']);
+    $routes->get('pelicula/imagen_descargar/(:num)', 'Dashboard\pelicula::descargar_imagen/$1',['as' => 'pelicula.descargar_imagen']);
+
+
     $routes->post('pelicula/(:num)/etiqueta/(:num)/delete','Dashboard\Pelicula::etiqueta_delete/$1/$2',['as' =>'pelicula.etiqueta_delete']);
 
 
@@ -73,6 +79,8 @@ $routes->post('register_post','\App\Controllers\Web\Usuario::register_post',['as
 
 $routes->get('logout','\App\Controllers\Web\Usuario::logout',['as'=>'usuario.logout']);
 
+//test
+$routes->get('/image/(:any)','Dashboard\Pelicula::image/$1',['as' => 'get_image']);
 
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
