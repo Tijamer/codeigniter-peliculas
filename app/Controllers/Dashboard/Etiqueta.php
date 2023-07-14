@@ -58,7 +58,7 @@ class Etiqueta extends BaseController
     {
         $etiquetaModel = new EtiquetaModel();
 
-        if ($this->validate('etiqueta')) {                    
+        if ($this->validate('etiquetas')) {                    
             $etiquetaModel->update($id,[
             'titulo' => $this->request->getPost('Titulo'),            
             'categoria_id' => $this->request->getPost('categoria_id')
@@ -71,7 +71,7 @@ class Etiqueta extends BaseController
             return redirect()->back()->withInput();
         }
         
-        return redirect()->back()->with('Mensaje','Registro Gestiondo de manera exitosa');
+        return redirect()->back()->with('mensaje','Registro Gestiondo de manera exitosa');
     }
     public function delete($id)
     {

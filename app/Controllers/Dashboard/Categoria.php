@@ -30,7 +30,7 @@ class Categoria extends BaseController
             ]);
             return redirect()->back()->withInput();
         }
-        return redirect()->to('/dashboard/categoria')->with('Mensaje','Registro Gestiondo de manera exitosa');
+        return redirect()->to('/dashboard/categoria')->with('mensaje','Registro Gestiondo de manera exitosa');
     }
     public function edit($id)
     {
@@ -54,15 +54,15 @@ class Categoria extends BaseController
             ]);
             return redirect()->back()->withInput();
         }
-        return redirect()->back()->with('Mensaje','Registro Gestiondo de manera exitosa');
+        return redirect()->back()->with('mensaje','Registro Gestiondo de manera exitosa');
     }
     public function delete($id)
     {
         $categoriaModel = new CategoriaModel();
         $categoriaModel->delete($id);
-        session()->setFlashdata('Mensaje','Registro eliminado de manera exitosa');
+        session()->setFlashdata('mensaje','Registro eliminado de manera exitosa');
         return redirect()->back();
-        //return redirect()->back()->with('Mensaje','Registro Gestiondo de manera exitosa');
+        //return redirect()->back()->with('mensaje','Registro Gestiondo de manera exitosa');
     }
     public function new() 
     {

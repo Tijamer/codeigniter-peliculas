@@ -1,17 +1,18 @@
 <?= $this->extend('Layouts/dashboard')?>
-
+<?= view('partials/_session')?>
 <?= $this->section('contenido')?>
-<form action="" method="post">
 
-<label for="">Categorias</label>
-<select name="categoria_id" id="categoria_id">
+<div class="container">
+<form action="" method="post">
+<label class="form-label" for="">Categorias</label>
+<select class="form-control"name="categoria_id" id="categoria_id">
     <option value=""></option>
     <?php foreach ($categorias as $c) : ?>
         <option <?=$c->id != $categoria_id ?: 'selected' ?> value="<?= $c->id ?>"><?= $c->titulos ?></option>
     <?php endforeach?>
 </select>
-<label for="">Etiquetas</label>
-<select name="etiqueta_id" id="etiqueta_id">
+<label class="form-label" for="">Etiquetas</label>
+<select class="form-control" name="etiqueta_id" id="etiqueta_id">
     <option value=""></option>
     <?php foreach ($etiquetas as $e) : ?>
         <option value="<?= $e->id ?>"><?= $e->titulo ?></option>
@@ -20,7 +21,7 @@
 
 <button type="submit" id="send">Enviar</button>
 </form>
-
+</div>
 <script>
 
     function disableEnableButton() {

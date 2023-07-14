@@ -1,13 +1,16 @@
-<label for="Titulo">Titulo</label>
-<input type="text" name="Titulo" placeholder="Titulo" id="Titulo" value="<?=old('titulo',$etiqueta->titulo)?>">
+<div class="mb-3">
+<label class="form-label mb-3" for="Titulo">Titulo</label>
+<input class="form-control" type="text" name="Titulo" placeholder="Titulo" id="Titulo" value="<?=old('titulo',$etiqueta->titulo)?>">
+</div>
 
-<label for="categoria_id">Categoria</label>
+<div class="mb-3">
+    <label class="form-label mb-3" for="categoria_id">Categoria</label>
+    <select class="form-control" name="categoria_id" id="categoria_id">
+        <option value=""></option>
+        <?php foreach ($categorias as $c) : ?>
+            <option <?= $c->id !== old('categoria_id',$etiqueta->categoria_id) ?: 'selected' ?> value="<?= $c->id ?>"><?= $c->titulos ?></option>
+        <?php endforeach?>
+    </select>
+</div>
 
-<select name="categoria_id" id="categoria_id">
-    <option value=""></option>
-    <?php foreach ($categorias as $c) : ?>
-        <option <?= $c->id !== old('categoria_id',$etiqueta->categoria_id) ?: 'selected' ?> value="<?= $c->id ?>"><?= $c->titulos ?></option>
-    <?php endforeach?>
-</select>
-
-<button type="submit"><?=$op?></button>
+<button type="submit" class="btn btn-primary btn-sm mt-1"><?=$op?></button>
